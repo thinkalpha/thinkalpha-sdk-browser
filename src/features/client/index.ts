@@ -1,35 +1,50 @@
-import { sendAndRespond, waitForAuth, waitForSDK } from '../../lib/messaging';
-import { DrawNLPTableMessage, DrawWatchListMessage, NLPTableReadyMessage } from '../../types';
-import { ClientConfig, NLPTableConfig, WatchlistTableConfig } from './types';
+import { sendAndRespond, waitForAuth, waitForSDK } from "../../lib/messaging";
+import {
+  DrawNLPTableMessage,
+  DrawWatchListMessage,
+  NLPTableReadyMessage,
+} from "../../types";
+import {
+  ClientConfig,
+  NLPTableConfig,
+  WatchlistTableConfig,
+} from "../../types";
 
 export class ThinkAlphaClient {
-    constructor(private config: ClientConfig) {}
+  constructor(private config: ClientConfig) {}
 
-    async drawNlpTable(config: NLPTableConfig, frame: HTMLIFrameElement) {
-        await waitForSDK(frame, this.config.endpointUrl);
+  async setStyleSheet(styleSheet: string, frame: HTMLIFrameElement) {
+    await sendAndRespond(
+      { type: "thinkalpha::set-style-sheet", payload: styleSheet },
+      frame.contentWindow!
+    );
+  }
 
-        await waitForAuth(frame, this.config.credentials);
+  async drawNlpTable(config: NLPTableConfig, frame: HTMLIFrameElement) {
+    await waitForSDK(frame, this.config.endpointUrl);
 
-        await sendAndRespond<DrawNLPTableMessage, NLPTableReadyMessage>(
-            {
-                type: 'thinkalpha::draw-nlp-table',
-                payload: config.phrase,
-            },
-            frame.contentWindow!,
-        );
-    }
+    await waitForAuth(frame, this.config.credentials);
 
-    async drawWatchList(config: WatchlistTableConfig, frame: HTMLIFrameElement) {
-        await waitForSDK(frame, this.config.endpointUrl);
+    await sendAndRespond<DrawNLPTableMessage, NLPTableReadyMessage>(
+      {
+        type: "thinkalpha::draw-nlp-table",
+        payload: config.phrase,
+      },
+      frame.contentWindow!
+    );
+  }
 
-        await waitForAuth(frame, this.config.credentials);
+  async drawWatchList(config: WatchlistTableConfig, frame: HTMLIFrameElement) {
+    await waitForSDK(frame, this.config.endpointUrl);
 
-        await sendAndRespond<DrawWatchListMessage, NLPTableReadyMessage>(
-            {
-                type: 'thinkalpha::draw-watch-list',
-                payload: config,
-            },
-            frame.contentWindow!,
-        );
-    }
+    await waitForAuth(frame, this.config.credentials);
+
+    await sendAndRespond<DrawWatchListMessage, NLPTableReadyMessage>(
+      {
+        type: "thinkalpha::draw-watch-list",
+        payload: config,
+      },
+      frame.contentWindow!
+    );
+  }
 }

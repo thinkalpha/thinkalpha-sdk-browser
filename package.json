@@ -1,31 +1,31 @@
 {
-    "name": "@thinkalpha/ui-sdk",
-    "private": true,
-    "version": "0.0.0",
-    "type": "module",
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "build:watch": "vite build --watch",
-        "preview": "vite preview"
-    },
-    "devDependencies": {
-        "@types/node": "^20.11.17",
-        "@types/uuid": "~9.0.7",
-        "typescript": "^5.2.2",
-        "vite": "^5.1.0",
-        "vite-plugin-dts": "^3.7.2"
-    },
-    "main": "./dist/thinkalpha-sdk.umd.cjs",
-    "module": "./dist/thinkalpha-sdk.js",
-    "types": "./dist/index.d.ts",
-    "exports": {
-        ".": {
-            "import": "./dist/thinkalpha-sdk.js",
-            "require": "./dist/thinkalpha-sdk.umd.cjs"
-        }
-    },
-    "dependencies": {
-        "uuid": "~9.0.1"
+  "name": "@thinkalpha/ui-sdk",
+  "private": false,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:watch": "vite build --watch",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "@types/uuid": "~9.0.7",
+    "typescript": "^5.2.2",
+    "vite": "^5.1.0",
+    "vite-plugin-dts": "^3.7.2"
+  },
+  "main": "./dist/thinkalpha-sdk.umd.cjs",
+  "module": "./dist/thinkalpha-sdk.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/thinkalpha-sdk.js",
+      "require": "./dist/thinkalpha-sdk.umd.cjs"
     }
+  },
+  "dependencies": {
+    "uuid": "~9.0.1"
+  }
 }
