@@ -1,4 +1,5 @@
 import { DisplaySettings } from "./displaySettings";
+export * from "./displaySettings";
 
 export interface ClientConfig {
   credentials: ClientCredentials;

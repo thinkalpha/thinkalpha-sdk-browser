@@ -1,69 +1,28 @@
 import { Property } from "csstype";
 
-export enum TextDecoration {
-  underline = "underline",
-}
-
-export enum TextAlign {
-  left = "left",
-  center = "center",
-  right = "right",
-  justify = "justify",
-}
-
-export enum SeparatorType {
-  verticalAndHorizontal = "verticalAndHorizontal",
-  vertical = "vertical",
-  horizontal = "horizontal",
-  none = "none",
-}
-
-export enum TimeFormat {
-  full = "full",
-  short = "short",
-  twentyFourHourTimeWithMS = "twentyFourHourTimeWithMS",
-  withoutPm = "withoutPm",
-  withoutSeconds = "withoutSeconds",
-}
-
-export enum DateFormat {
-  monthsAndDays = "monthsAndDays",
-  full = "full",
-  fullReverse = "fullReverse",
-  fullComma = "fullComma",
-  withWeekday = "withWeekday",
-  dayOfYear = "dayOfYear",
-}
-
-export enum DateTimeLocation {
-  local = "local",
-  market = "market",
-}
-
-export interface FormattingSeparator {
-  type: SeparatorType; // vertical, horizontal, etc
-  color: string; // red, green, #hex, rgba()
-}
-
-export enum NumberAbbreviation {
-  hundred = "hundred", // QTY/100
-  thousand = "thousand", // K
-  million = "million", // M
-  billion = "billion", // B
-  dynamic = "dynamic", // Dynamic -- automatic variable choice per row to result in max 3 digits -- 1,412 -> 1.41K, 12.3 -> 12.3
-  none = "none",
-}
-
-export enum UnitDisplay {
-  "percentage" = "percentage", // 0.25 => 25%
-  "currency" = "currency", // 1,433 => $1,433
-  "none" = "none",
-}
-
-export enum NumberFormatLocale {
-  "system" = "system", // system locale, whatever browser navigator has
-  "none" = "none",
-}
+export type TimeFormat =
+  | "full"
+  | "short"
+  | "twentyFourHourTimeWithMS"
+  | "withoutPm"
+  | "withoutSeconds";
+export type DateFormat =
+  | "monthsAndDays"
+  | "full"
+  | "fullReverse"
+  | "fullComma"
+  | "withWeekday"
+  | "dayOfYear";
+export type DateTimeLocation = "local" | "market";
+export type NumberAbbreviation =
+  | "hundred" // QTY/100
+  | "thousand" // "k"
+  | "million" // "M"
+  | "billion" // "B"
+  | "dynamic" // Dynamic -- automatic variable choice per row to result in max 3 digits -- 1,412 -> 1.41K, 12.3 -> 12.3
+  | "none";
+export type UnitDisplay = "percentage" | "currency" | "none";
+export type NumberFormatLocale = "system" | "none";
 
 /**
  * Styling options, largely based on CSS specifications.
@@ -133,20 +92,8 @@ export type DisplayStyles = {
   };
 };
 
-export declare enum NumericUnit {
-  percent = "percent",
-  volume = "volume",
-  price = "price",
-  rank = "rank",
-  quantity = "quantity",
-}
-export declare enum StringUnit {
-  symbol = "symbol",
-  name = "name",
-  account = "account",
-  position = "position",
-}
-
+export type NumericUnit = "percent" | "volume" | "price" | "rank" | "quantity";
+export type StringUnit = "symbol" | "name" | "account" | "position";
 export type ConcreteUnit = NumericUnit | StringUnit;
 
 /**

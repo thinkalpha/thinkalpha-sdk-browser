@@ -1,1 +1,2 @@
-export { ThinkAlphaClient } from './features/client';
+export { ThinkAlphaClient } from "./features/client";
+export * from "./types";
