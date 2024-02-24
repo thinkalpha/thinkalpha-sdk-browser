@@ -1,3 +1,5 @@
+import { DisplaySettings } from "./displaySettings";
+
 export interface ClientConfig {
   credentials: ClientCredentials;
   endpointUrl: string;
@@ -6,10 +8,11 @@ export interface ClientConfig {
 
 export interface NLPTableConfig {
   phrase: string;
+  gridDisplaySettings?: DisplaySettings[];
 }
 
 export interface WatchlistTableConfig {
-  // ToDo: column template
+  columnTemplate: any; // ToDo: Pull relevant properties
   symbols: string[];
 }
 
@@ -34,7 +37,7 @@ export type SubmitClientCredentialsMessage = {
 
 export type DrawNLPTableMessage = {
   type: "thinkalpha::draw-nlp-table";
-  payload: string;
+  payload: NLPTableConfig;
 };
 
 export type DrawWatchListMessage = {

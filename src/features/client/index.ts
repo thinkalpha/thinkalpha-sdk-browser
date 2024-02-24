@@ -28,7 +28,7 @@ export class ThinkAlphaClient {
     await sendAndRespond<DrawNLPTableMessage, NLPTableReadyMessage>(
       {
         type: "thinkalpha::draw-nlp-table",
-        payload: config.phrase,
+        payload: config,
       },
       this.config.frame.contentWindow!
     );
