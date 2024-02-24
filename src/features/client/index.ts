@@ -13,38 +13,37 @@ import {
 export class ThinkAlphaClient {
   constructor(private config: ClientConfig) {}
 
-  async setStyleSheet(styleSheet: string, frame: HTMLIFrameElement) {
+  async setStyleSheet(styleSheet: string) {
     await sendAndRespond(
       { type: "thinkalpha::set-style-sheet", payload: styleSheet },
-      frame.contentWindow!
+      this.config.frame.contentWindow!
     );
   }
 
-  async drawNlpTable(config: NLPTableConfig, frame: HTMLIFrameElement) {
-    await waitForSDK(frame, this.config.endpointUrl);
+  async drawNlpTable(config: NLPTableConfig) {
+    await waitForSDK(this.config.frame, this.config.endpointUrl);
 
-    await waitForAuth(frame, this.config.credentials);
+    await waitForAuth(this.config.frame, this.config.credentials);
 
     await sendAndRespond<DrawNLPTableMessage, NLPTableReadyMessage>(
       {
         type: "thinkalpha::draw-nlp-table",
         payload: config.phrase,
       },
-      frame.contentWindow!
+      this.config.frame.contentWindow!
     );
   }
 
-  async drawWatchList(config: WatchlistTableConfig, frame: HTMLIFrameElement) {
-    await waitForSDK(frame, this.config.endpointUrl);
-
-    await waitForAuth(frame, this.config.credentials);
+  async drawWatchList(config: WatchlistTableConfig) {
+    await waitForSDK(this.config.frame, this.config.endpointUrl);
+    await waitForAuth(this.config.frame, this.config.credentials);
 
     await sendAndRespond<DrawWatchListMessage, NLPTableReadyMessage>(
       {
         type: "thinkalpha::draw-watch-list",
         payload: config,
       },
-      frame.contentWindow!
+      this.config.frame.contentWindow!
     );
   }
 }

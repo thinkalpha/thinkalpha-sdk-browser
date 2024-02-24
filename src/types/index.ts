@@ -1,6 +1,7 @@
 export interface ClientConfig {
   credentials: ClientCredentials;
   endpointUrl: string;
+  frame: HTMLIFrameElement;
 }
 
 export interface NLPTableConfig {
