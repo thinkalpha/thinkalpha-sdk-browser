@@ -14,6 +14,8 @@ export class ThinkAlphaClient {
   constructor(private config: ClientConfig) {}
 
   async setStyleSheet(styleSheet: string) {
+    await waitForSDK(this.config.frame, this.config.endpointUrl);
+
     await sendAndRespond(
       { type: "thinkalpha::set-style-sheet", payload: styleSheet },
       this.config.frame.contentWindow!
